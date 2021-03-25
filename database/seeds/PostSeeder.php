@@ -17,7 +17,19 @@ class PostSeeder extends Seeder
         for ($i = 0; $i < 15; $i++) { 
             $newPost = new Post();
             $newPost->title = $faker->sentence(3);
-            $newPost->slug = Str::slug($newPost->title);
+
+            $slug = Str::slug($newPost->title);
+            $memorySlug = $slug;
+            $sameSlug = Post::where('slug', $slug)->first();
+            $counter = 1;
+
+            while ($sameSlug) {
+                $slug = $memorySlug . '-' . $counter;
+                $sameSlug = Post::where('slug', $slug)->first();
+                $counter++;
+            }
+            $newPost->slug = $slug;
+
             $newPost->content = $faker->text(70);
             $newPost->save();
         }
