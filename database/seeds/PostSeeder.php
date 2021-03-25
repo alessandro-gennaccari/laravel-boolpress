@@ -35,7 +35,7 @@ class PostSeeder extends Seeder
             }
             $newPost->slug = $slug;
 
-            $newPost->content = $faker->text(70);
+            $newPost->content = $faker->text(150);
 
             $newPost->save();
         }
