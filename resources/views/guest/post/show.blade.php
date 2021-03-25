@@ -5,7 +5,7 @@
 @section('content')
 <div class="container pt-5">
 
-    <div class="d-flex position-relative mb-4 p-4 bg-dark text-light border border-warning rounded">
+    <div class="d-flex position-relative mb-4 p-4 bg-primary text-light border border-info rounded">
         <div>
             <h5 class="mt-0">{{ $info->title }}</h5>
             <p>{{ $info->content }}</p>
