@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
-use Illuminate\Support\Facedes\Auth; 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -37,7 +38,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newPost = new Post();
+        $newPost->fill($request->all());
+        $newPost->user_id = Auth::id();
+        $newPost->slug = Str::slug($request->title);
+        $newPost->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
