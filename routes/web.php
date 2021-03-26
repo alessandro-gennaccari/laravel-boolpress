@@ -22,4 +22,5 @@ Auth::routes();
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/post', 'PostController');
+    Route::get('/tags', 'TagController@index')->name('post.tags');
 });
