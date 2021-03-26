@@ -84,7 +84,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{Route('post.index')}}">
                                 Posts
                             </a>
                         </li>
