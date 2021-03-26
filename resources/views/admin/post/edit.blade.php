@@ -29,6 +29,16 @@
                     <label for="inputcontent" class="form-label">Contenuto</label>
                     <textarea class="form-control" id="inputcontent" rows="3" name="content">{{$editPost->content}}</textarea>
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        @foreach ($tags as $tag)
+                        <div class="input-group-text mr-2">
+                            <input type="checkbox" aria-label="Checkbox for following text input" name="tags[]" value="{{$tag->id}}" {{ $editPost->tags->contains($tag->id) ? 'checked' : '' }}>
+                            <span class="ml-3">{{$tag->name}}</span>
+                        </div>
+                      @endforeach
+                    </div>
+                </div>
                 <a class="btn btn-info col-1" href="{{ Route('post.index') }}">Back</a>
                 <button type="submit" class="btn btn-warning col-1">Edit</button>
             </form>

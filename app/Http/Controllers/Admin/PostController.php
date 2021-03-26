@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Post;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -28,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        return view('admin.post.create', [ 'tags' => Tag::all() ]);
     }
 
     /**
@@ -39,7 +40,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'title' => 'required|unique:posts|max:80',
             'content' => 'required'
@@ -50,6 +50,10 @@ class PostController extends Controller
         $newPost->user_id = Auth::id();
         $newPost->slug = Str::slug($request->title);
         $newPost->save();
+
+        if(array_key_exists('tags', $request->all())){
+            $newPost->tags()->sync($request->tags);
+        }
 
         return redirect()->route('post.index');
     }
@@ -73,7 +77,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.post.edit', [ 'editPost' => $post ]);
+        return view('admin.post.edit', [ 'editPost' => $post, 'tags' => Tag::all() ]);
     }
 
     /**
@@ -95,7 +99,12 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
+        if(array_key_exists('tags', $request->all())){
+            $post->tags()->sync($request->tags);
+        }
         $post->update($request->all());
+
+
         return redirect()->route('post.show', $post);
     }
 
@@ -107,6 +116,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->tags()->sync([]);
         $post->delete();
         return redirect()->route('post.index');
     }
