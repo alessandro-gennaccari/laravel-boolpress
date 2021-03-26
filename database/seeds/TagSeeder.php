@@ -34,7 +34,7 @@ class TagSeeder extends Seeder
         ];
 
         foreach ($tags as $tag) {
-            $newTag = new Student();
+            $newTag = new Tag();
             $newTag->name = $tag['name'];
             $newTag->save();
         }
