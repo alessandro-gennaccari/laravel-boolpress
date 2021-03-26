@@ -20,14 +20,14 @@
                     <label for="inputcontent" class="form-label">Contenuto</label>
                     <textarea class="form-control" id="inputcontent" rows="3" name="content">{{$editPost->content}}</textarea>
                 </div>
-                <a class="btn btn-info" href="{{ Route('post.index') }}">Back</a>
-                <button type="submit" class="btn btn-warning">Edit</button>
+                <a class="btn btn-info col-1" href="{{ Route('post.index') }}">Back</a>
+                <button type="submit" class="btn btn-warning col-1">Edit</button>
             </form>
-            {{-- <form class="mt-4" method="post" action="{{ Route('film.destroy', $edit->id) }}">
+            <form class="mt-2 pl-1" method="post" action="{{ Route('post.destroy', $editPost->id) }}">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Delete</button>
-            </form> --}}
+                <button class="btn btn-danger col-2">Delete</button>
+            </form>
         </div>
     </div>
 </div>

@@ -27,17 +27,17 @@
                         <td>{{ $post->user_id }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
-                        <td>{{ $post->content }}</td>
+                        <td class="w-25">{{ $post->content }}</td>
                         <td>{{ $post->user->email }}</td>
                         <td>{{ $post->user->name }}</td>
                         <td class="text-right">
-                            <a class="btn btn-info w-75 mb-1" href="{{ Route('post.index') }}">Back</a>
-                            <a class="btn btn-warning w-75 mb-1" href="{{ Route('post.edit',  $post->id) }}">Edit</a>
-                            {{-- <form class="d-inline-block" method="post" action="{{ Route('post.destroy', $post->id) }}">
+                            <a class="btn btn-info" href="{{ Route('post.index') }}">Back</a>
+                            <a class="btn btn-warning" href="{{ Route('post.edit',  $post->id) }}">Edit</a>
+                            <form class="d-inline-block" method="post" action="{{ Route('post.destroy', $post->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">Delete</button>
-                            </form> --}}
+                            </form>
                         </td>
                     </tr>
                 </tbody>

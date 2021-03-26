@@ -25,15 +25,15 @@
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
-                        <td>{{ $post->content }}</td>
+                        <td class="w-25">{{ $post->content }}</td>
                         <td class="text-right">
-                            <a class="btn btn-success w-75 mb-1" href="{{ Route('post.show', $post->id) }}">View</a>
-                            <a class="btn btn-warning w-75 mb-1" href="{{ Route('post.edit',  $post->id) }}">Edit</a>
-                            {{-- <form class="d-inline-block" method="post" action="{{ Route('post.destroy', $post->id) }}">
+                            <a class="btn btn-success" href="{{ Route('post.show', $post->id) }}">View</a>
+                            <a class="btn btn-warning" href="{{ Route('post.edit',  $post->id) }}">Edit</a>
+                            <form class="d-inline-block" method="post" action="{{ Route('post.destroy', $post->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">Delete</button>
-                            </form> --}}
+                            </form>
                         </td>
                     </tr>
                     @endforeach
