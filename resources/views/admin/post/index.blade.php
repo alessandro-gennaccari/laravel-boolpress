@@ -3,8 +3,9 @@
 @section('title', 'All Data Posts')
 
 @section('content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="d-flex justify-content-flex-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">All Posts</h1>
+    <a class="btn btn-success ml-5" href="{{ Route('post.create') }}" role="button">Aggiungi</a>
 </div>
 <div class="container-fluid">
     <div class="row justify-content-center">
