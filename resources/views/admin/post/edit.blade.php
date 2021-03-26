@@ -7,6 +7,15 @@
     <h1 class="h2">Edit Post</h1>
 </div>
 <div class="container-fluid">
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="row justify-content-center">
         <div class="col-md-12">
             <form action="{{Route('post.update', $editPost->id)}}" method="post">

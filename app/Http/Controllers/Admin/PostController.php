@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -38,6 +39,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|unique:posts|max:80',
+            'content' => 'required'
+        ]);
+
         $newPost = new Post();
         $newPost->fill($request->all());
         $newPost->user_id = Auth::id();
@@ -78,6 +85,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+        $request->validate([
+            'title' => [
+                'required',
+                Rule::unique('posts')->ignore($post), //Aggiungere use...\Rule;
+                'max:80' 
+            ],
+            'content' => 'required'
+        ]);
+
         $post->update($request->all());
         return redirect()->route('post.show', $post);
     }
