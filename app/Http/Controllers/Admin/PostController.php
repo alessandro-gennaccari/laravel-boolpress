@@ -104,7 +104,6 @@ class PostController extends Controller
         }
         $post->update($request->all());
 
-
         return redirect()->route('post.show', $post);
     }
 
