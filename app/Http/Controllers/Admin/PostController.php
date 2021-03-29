@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Post;
 use App\Tag;
@@ -49,6 +50,7 @@ class PostController extends Controller
         $newPost->fill($request->all());
         $newPost->user_id = Auth::id();
         $newPost->slug = Str::slug($request->title);
+        $newPost->cover = Storage::put('post_covers', $request->image);
         $newPost->save();
 
         if(array_key_exists('tags', $request->all())){
@@ -98,6 +100,10 @@ class PostController extends Controller
             ],
             'content' => 'required'
         ]);
+
+        if($request->image != $post->image) {
+            $post->cover = Storage::put('post_covers', $request->image);
+        }
 
         if($request->title != $post->title) {
             $post->slug = Str::slug($request->title);
