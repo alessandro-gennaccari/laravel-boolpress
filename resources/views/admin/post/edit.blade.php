@@ -25,10 +25,14 @@
                     <label for="inputtitle" class="form-label">Titolo</label>
                     <input type="text" class="form-control" id="inputtitle" name="title" value="{{$editPost->title}}">
                 </div>
+                @if($editPost->cover)
+                <img class="w-75" src="{{asset('storage/'.$editPost->cover)}}" alt="{{$editPost->title}}">
+                @else
+                <p>Immagine non presente</p>
+                @endif
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="file" name="image">
-                        <label class="custom-file-label" for="file">Choose file</label>
+                        <input type="file" id="file" name="image">
                     </div>
                 </div>
                 <div class="mb-3">
