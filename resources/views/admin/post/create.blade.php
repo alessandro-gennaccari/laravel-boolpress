@@ -27,8 +27,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="file" name="image">
-                        <label class="custom-file-label" for="file">Choose file</label>
+                        <input type="file" id="file" name="image">
                     </div>
                 </div>
                 <div class="mb-3">
