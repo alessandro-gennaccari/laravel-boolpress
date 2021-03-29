@@ -18,12 +18,18 @@
         @endif
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form action="{{Route('post.store')}}" method="post">
+            <form action="{{Route('post.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="mb-3">
                     <label for="inputtitle" class="form-label">Titolo</label>
                     <input type="text" class="form-control" id="inputtitle" name="title" value="{{ old('title')}}">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="file" name="image">
+                        <label class="custom-file-label" for="file">Choose file</label>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputcontent" class="form-label">Contenuto</label>
