@@ -99,6 +99,10 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
+        if($request->title != $post->title) {
+            $post->slug = Str::slug($request->title);
+        }
+
         if(array_key_exists('tags', $request->all())){
             $post->tags()->sync($request->tags);
         }
