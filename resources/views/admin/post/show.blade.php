@@ -17,6 +17,7 @@
                         <th scope="col">Titolo</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Contenuto</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Email</th>
                         <th scope="col">Nome</th>
                     </tr>
@@ -27,7 +28,8 @@
                         <td>{{ $post->user_id }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
-                        <td class="w-25">{{ $post->content }}</td>
+                        <td>{{ $post->content }}</td>
+                        <td><img class="w-75" src="{{asset('storage/'.$post->cover)}}" alt="{{$post->title}}"></td>
                         <td>{{ $post->user->email }}</td>
                         <td>{{ $post->user->name }}</td>
                         <td class="text-right">
