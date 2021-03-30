@@ -21,7 +21,7 @@
                 <form action="{{ route('genera-token') }}" method="post">
                     @csrf
                     @method('POST')
-                    <button class="btn btn-primary">Genera Token</button>
+                    <button class="btn btn-primary">Genera Bearer Token</button>
                 </form>
                 @endif
             </li>
